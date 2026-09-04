@@ -1,0 +1,178 @@
+/*!
+ * Custom CSS for Apprise
+ * Docs & License: https://offerplant.com/
+ * (c) 2019 OfferPlant
+ */
+ /*@import url('https://fonts.googleapis.com/css?family=Arimo&display=swap');*/
+ @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+body{
+	font-family: 'Quicksand', sans-serif;
+	color:#003366;
+	font-weight:600;
+}
+#main_area{
+	width:100%;
+}
+label{
+	color:#69008c;
+	font-weight:400;
+}
+h1{
+	margin-bottom:20px;
+	padding:5px 0px;
+	background:#1BB2B3!important;
+	color:#fff;
+	line-height:30px;
+	font-size:20px;
+	letter-spacing:2px;
+	border-radius:0px;
+}
+h2{
+	font-size:20px;
+	color:#1BB2B3!important;
+	line-height:28px;
+	border-left:solid 5px #;
+	padding-left:10px;
+	margin-bottom:10px;
+	
+}
+.h2{
+	font-size:12px;
+	color:#1BB2B3;
+	line-height:30px;
+	border-left:solid 5px #1BB2B3;
+	padding:2px;
+	margin:1px 3px;
+	height:24px;
+	
+}
+#login-page{
+	background:url('../img/back.jpg') no-repeat 50% 50%;
+	background-size:100% 100%;
+}
+#login-area{
+	opacity:0.85;
+	border:solid 1px #fff;
+}
+.delete_btn{
+	color:#fff;
+	background:#dc3545!important;
+	padding:4px 8px;
+	/*border-radius:2px; */
+	cursor:pointer;
+}
+
+.block_btn{
+	margin:2px 5px;
+	color:#fff;
+	background:#000;
+	padding:3px 4px;
+	border-radius:2px;
+	cursor:pointer;
+}
+
+#add_btn{
+	color:#fff;
+	font-size:12px;
+	background:green;
+	padding:3px 4px;
+	border-radius:10px;
+}
+.btn-xs{
+	padding: .25rem .65rem;
+	font-size:10px;
+	text-transform:uppercase;
+}
+.bg-primary /* Header Color */
+{ 
+	
+	background-color: #004d66!important
+}
+.sidebar ul li a /* Main Menu Border line */
+{
+	/*border-right:solid 2px #f8f9fa;
+	border-top:solid 1px #e31241; */
+	border-bottom:dotted 1px #fdfdff;
+}
+.sidebar-dark /*  Sub Menu */
+ ul ul a {
+	background:#1BB2B3;
+	font-size:13px;
+	color:#ececfb;
+}
+.bg-dark  /* Menu  & Sidebar Color */
+{
+    background-color:#4c79ff!important;
+}
+
+.p-4 /* Container margin */
+{
+	margin-top:-15px!important;
+}
+
+.fa .fa-fw a{
+	border:solid 1px #fff;
+	color:red!important;
+}
+.error{
+	color:red;
+	font-size:12px;
+}
+.apploader{
+	background:lightyellow url('../img/loader.gif') no-repeat 50% 50%;
+	background-size:200px 200px;
+	z-index:1000;
+	opacity:0.3;
+	padding :10px;
+
+}
+.table td{
+	padding: .25rem;
+}
+.hotkey{
+	font-weight:800;
+	font-size:14px;
+	color: #ffc107!important;
+	text-decoration:underline;
+}
+.hotlink{
+	background:#000;
+	color:#c3c3c3;
+	text-align:center;
+	font-size:12px;
+	line-height:30px;
+}
+.hotlink a{
+	color: #ffc107!important;
+	text-decoration:none;
+}
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.loader {
+    display:    none;
+    position:   fixed;
+    z-index:    2;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .loader {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .loader {
+    display: block;
+}

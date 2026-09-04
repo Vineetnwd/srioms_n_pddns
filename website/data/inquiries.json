@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Amit Kumar Sharma",
+    "phone": "9876543210",
+    "email": "amit.sharma@example.com",
+    "type": "Course Admission",
+    "course": "DMLT",
+    "guardian_name": "Ramesh Sharma",
+    "qualification": "12th (PCB Science)",
+    "address": "Siwan, Bihar",
+    "message": "Interested in DMLT session 2026-27 admission and fee schedule.",
+    "status": "New",
+    "date": "2026-09-02 11:30:00"
+  },
+  {
+    "id": 2,
+    "name": "Pooja Kumari",
+    "phone": "9835123456",
+    "email": "pooja.k@example.com",
+    "type": "Course Admission",
+    "course": "ANM",
+    "guardian_name": "Suresh Kumar",
+    "qualification": "12th (Arts / Commerce)",
+    "address": "Gopalganj, Bihar",
+    "message": "Enquiry for ANM Nursing hostel and clinical training details.",
+    "status": "Contacted",
+    "date": "2026-09-01 15:45:00"
+  },
+  {
+    "id": 3,
+    "name": "Md. Tariq Anwar",
+    "phone": "9931234567",
+    "email": "",
+    "type": "MRI Scan Booking",
+    "course": "",
+    "guardian_name": "",
+    "qualification": "",
+    "address": "Fatehpur, Siwan",
+    "message": "Emergency MRI Brain with Contrast prescribed by neuro doctor.",
+    "status": "Completed",
+    "date": "2026-09-02 09:15:00"
+  }
+]

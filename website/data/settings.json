@@ -1,0 +1,19 @@
+{
+  "site_name": "SHRI RAM Institute of Medical Sciences",
+  "site_short_name": "SRIOMS",
+  "site_tagline": "Centre for Paramedical Education & Advanced Diagnostics",
+  "site_email": "info@srioms.co.in",
+  "site_phone": "+91 9934402822",
+  "site_phone_alt": "+91 9431426600",
+  "site_emergency": "+91 9934402822",
+  "site_address": "Shri Ram MRI Scan Center, Fatehpur Bypass Road, Siwan - 841226 (Bihar)",
+  "site_city": "Siwan, Bihar",
+  "site_timings": "Hospital & MRI: 24x7 Open | OPD / Institute: 8:00 AM - 6:00 PM",
+  "app_login_url": "https://apps.srioms.co.in/login.php",
+  "webmail_url": "https://mail.hostinger.com/",
+  "notice_ticker": "🎓 Admissions Open (Session 2026-27): DMLT, BMLT, DMRT, BPT, ANM Nursing & OT Tech. 🏥 Shri Ram MRI Scan Center: 24x7 Emergency & Diagnostic Scanning Available (Helpline: 9934402822) 🔬 Pathology & Biochemistry Lab: Fully automated testing with same-day reports.",
+  "admin_user": "admin",
+  "admin_password": "admin",
+  "admin_pass_hash": "$2y$10$QOaM0eO6z30dIuFf2M7Xg.18zZtXWfU4qM7M2Rk0Zf5A3qO7oW1S6",
+  "admin_email": "info@srioms.co.in"
+}

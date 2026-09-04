@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "code": "ANM",
+    "name": "Auxiliary Nursing & Midwifery",
+    "level": "Diploma in Nursing",
+    "duration": "2 Years (4 Semesters)",
+    "eligibility": "10+2 in Arts / Science / Commerce (Min 40-45%, Age 17-35)",
+    "seats": "60 Seats",
+    "fees": "₹55,000 / Year",
+    "description": "Fundamental nursing foundation, maternal and child healthcare, community immunization, clinical bedside care, and rural health center postings.",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "code": "GNM",
+    "name": "General Nursing and Midwifery",
+    "level": "Diploma in General Nursing",
+    "duration": "3 Years (Incl. 6M Clinical Internship)",
+    "eligibility": "10+2 with English & PCB / Arts / Commerce (Min 40%+)",
+    "seats": "60 Seats",
+    "fees": "₹75,000 / Year",
+    "description": "Comprehensive healthcare nursing in medical-surgical wards, pediatric care, obstetrics & gynecology, psychiatric nursing, and community health.",
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "code": "B.Sc Nursing",
+    "name": "Bachelor of Science in Nursing",
+    "level": "Undergraduate Degree",
+    "duration": "4 Years (8 Semesters)",
+    "eligibility": "10+2 with Physics, Chemistry & Biology (Min 45-50%)",
+    "seats": "40 Seats",
+    "fees": "₹95,000 / Year",
+    "description": "Advanced professional nursing degree with intensive clinical rotations, emergency trauma care, critical care ICU nursing, and healthcare administration.",
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "code": "P.B. B.Sc",
+    "name": "Post Basic B.Sc Nursing",
+    "level": "Post Basic Degree",
+    "duration": "2 Years",
+    "eligibility": "Passed GNM Nursing & Registered RN/RM with State Nursing Council",
+    "seats": "30 Seats",
+    "fees": "₹70,000 / Year",
+    "description": "Designed for registered GNM nurses to advance their clinical expertise into nursing education, administration, and specialized hospital practice.",
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "code": "DMLT",
+    "name": "Diploma in Medical Laboratory Technology",
+    "level": "Paramedical Diploma",
+    "duration": "2 Years",
+    "eligibility": "10+2 Science (PCB / PCM)",
+    "seats": "40 Seats",
+    "fees": "₹45,000 / Year",
+    "description": "Practical clinical training in automated biochemistry, diagnostic hematology, serology, microbiology, and blood banking.",
+    "status": "Active"
+  },
+  {
+    "id": 6,
+    "code": "OT Tech",
+    "name": "Diploma in Operation Theatre Technology",
+    "level": "Paramedical Diploma",
+    "duration": "2 Years",
+    "eligibility": "10+2 Science (PCB/PCM)",
+    "seats": "30 Seats",
+    "fees": "₹45,000 / Year",
+    "description": "Surgical room sterilization, surgical instrumentation preparation, anesthesia assisting, and recovery room patient support.",
+    "status": "Active"
+  }
+]

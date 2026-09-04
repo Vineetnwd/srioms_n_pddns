@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "code": "DMLT",
+    "name": "Diploma in Medical Laboratory Technology",
+    "level": "Diploma",
+    "duration": "2 Years (4 Semesters)",
+    "eligibility": "10+2 Science (PCB / PCM)",
+    "seats": "60",
+    "fees": "₹45,000 / Year",
+    "description": "Comprehensive training in clinical hematology, automated biochemistry, microbiology, serology, histopathology, and blood banking.",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "code": "BMLT",
+    "name": "Bachelor of Medical Laboratory Technology",
+    "level": "Degree",
+    "duration": "3.5 Years (Incl. 6M Internship)",
+    "eligibility": "10+2 with PCB (45%+)",
+    "seats": "40",
+    "fees": "₹65,000 / Year",
+    "description": "Advanced degree covering clinical genetics, immunology, toxicology, molecular diagnostics, and diagnostic lab management.",
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "code": "DMRT",
+    "name": "Diploma in Medical Radiography Technology",
+    "level": "Diploma",
+    "duration": "2 Years",
+    "eligibility": "10+2 Science",
+    "seats": "40",
+    "fees": "₹50,000 / Year",
+    "description": "Specialized training in Digital X-Ray, CT-Scan operations, 1.5T MRI imaging techniques, and radiological safety.",
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "code": "BPT",
+    "name": "Bachelor of Physiotherapy",
+    "level": "Bachelor Degree",
+    "duration": "4.5 Years (Incl. 6M Rotatory)",
+    "eligibility": "10+2 with PCB (50%+)",
+    "seats": "50",
+    "fees": "₹75,000 / Year",
+    "description": "Comprehensive physiotherapy training in orthopedic rehab, neurology, sports injury management, and therapeutic exercise.",
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "code": "ANM",
+    "name": "Auxiliary Nursing & Midwifery",
+    "level": "Nursing",
+    "duration": "2 Years",
+    "eligibility": "10+2 Any Stream (Age 17+)",
+    "seats": "60",
+    "fees": "₹55,000 / Year",
+    "description": "Professional nursing training in maternal healthcare, immunization, clinical ward duties, and community healthcare.",
+    "status": "Active"
+  },
+  {
+    "id": 6,
+    "code": "OT",
+    "name": "Diploma in Operation Theatre Technology",
+    "level": "Diploma",
+    "duration": "2 Years",
+    "eligibility": "10+2 Science",
+    "seats": "30",
+    "fees": "₹45,000 / Year",
+    "description": "Surgical instrumentation, anesthesia assistance, sterile room protocols, and surgical team support.",
+    "status": "Active"
+  },
+  {
+    "id": 7,
+    "code": "Dresser",
+    "name": "Certified Dresser & First Aid",
+    "level": "Certificate",
+    "duration": "1 Year",
+    "eligibility": "10th (Matriculation)",
+    "seats": "50",
+    "fees": "₹25,000 / Year",
+    "description": "Clinical dressing, wound sterilization, emergency triage, and basic community healthcare assistance.",
+    "status": "Active"
+  }
+]

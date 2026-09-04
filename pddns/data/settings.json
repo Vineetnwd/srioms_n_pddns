@@ -1,0 +1,21 @@
+{
+  "site_name": "Pt. Deen Dayal Nursing School",
+  "site_short_name": "PDDNS",
+  "site_tagline": "Approved by Govt. of Bihar & BNRC (Indian Nursing Council Standards)",
+  "site_email": "info@pddns.in",
+  "site_email_alt": "pddnssiwan@gmail.com",
+  "site_phone": "+91 9934402822",
+  "site_phone_alt": "+91 9431426600",
+  "site_emergency": "+91 9934402822",
+  "site_address": "Panchmukhi Bypass Road, Pal Nagar / Fatehpur, Siwan - 841226 (Bihar)",
+  "site_city": "Siwan, Bihar",
+  "site_timings": "College & Admin Office: 8:00 AM - 5:00 PM | Clinical Training: 24x7 Rotations",
+  "site_established": "2018",
+  "app_login_url": "https://apps.srioms.co.in/login.php",
+  "webmail_url": "https://mail.hostinger.com/",
+  "notice_ticker": "🌟 Admissions Open (Session 2026-27): ANM, GNM & B.Sc Nursing. 🏥 100% Practical Hospital Clinical Training & Rotations. 📞 Admissions Helpline: +91 9934402822 / 9431426600. 📜 Approved by Health Dept., Govt. of Bihar & Bihar Nurses Registration Council (BNRC).",
+  "admin_user": "admin",
+  "admin_password": "admin",
+  "admin_pass_hash": "$2y$10$QOaM0eO6z30dIuFf2M7Xg.18zZtXWfU4qM7M2Rk0Zf5A3qO7oW1S6",
+  "admin_email": "info@pddns.in"
+}

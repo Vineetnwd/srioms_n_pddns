@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "1.5 Tesla Supercon MRI Scan",
+    "category": "Radiology",
+    "timing": "24x7 Open",
+    "description": "Whole body, brain, spine, joints, angiography, and MRCP imaging with high tissue contrast.",
+    "featured": 1,
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Multi-Slice Helical CT Scan",
+    "category": "Radiology",
+    "timing": "24x7 Open",
+    "description": "Ultra-fast low-radiation CT scanning for head trauma, chest HRCT, and 3D bone rendering.",
+    "featured": 1,
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "3D/4D Ultrasound & Color Doppler",
+    "category": "Sonography",
+    "timing": "8:00 AM - 8:00 PM",
+    "description": "High-definition obstetrics, abdominal, vascular, and small part ultrasonography.",
+    "featured": 1,
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "name": "Automated Pathology Lab",
+    "category": "Laboratory",
+    "timing": "24x7 Open",
+    "description": "5-part hematology, clinical biochemistry, hormones, thyroid, and microbial testing.",
+    "featured": 1,
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "name": "High-Frequency Digital X-Ray",
+    "category": "Radiology",
+    "timing": "24x7 Open",
+    "description": "Computerized digital radiography for chest, spine, fracture detection, and contrast studies.",
+    "featured": 1,
+    "status": "Active"
+  },
+  {
+    "id": 6,
+    "name": "12-Channel Computerized ECG",
+    "category": "Cardiology",
+    "timing": "24x7 Open",
+    "description": "Diagnostic 12-lead cardiac rhythm evaluation and pre-operative clearances.",
+    "featured": 1,
+    "status": "Active"
+  }
+]

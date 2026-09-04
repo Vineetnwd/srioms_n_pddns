@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Priyanka Kumari",
+    "phone": "9876543210",
+    "email": "priyanka.nursing@gmail.com",
+    "type": "Course Admission",
+    "course": "GNM",
+    "guardian_name": "Raghunath Singh",
+    "qualification": "12th (PCB Science)",
+    "address": "Siwan, Bihar",
+    "message": "Interested in GNM Nursing 3-year diploma, hostel facilities and hospital training.",
+    "status": "New",
+    "date": "2026-09-02 11:45:00"
+  },
+  {
+    "id": 2,
+    "name": "Anjali Sharma",
+    "phone": "9835123456",
+    "email": "anjali.s@gmail.com",
+    "type": "Course Admission",
+    "course": "ANM",
+    "guardian_name": "Satish Sharma",
+    "qualification": "12th (Arts)",
+    "address": "Gopalganj, Bihar",
+    "message": "Enquiry for ANM 2-year course admission process for 2026 session.",
+    "status": "Contacted",
+    "date": "2026-09-01 14:20:00"
+  },
+  {
+    "id": 3,
+    "name": "Neha Patel",
+    "phone": "9931234567",
+    "email": "neha.patel@gmail.com",
+    "type": "Course Admission",
+    "course": "B.Sc Nursing",
+    "guardian_name": "Manoj Patel",
+    "qualification": "12th (Biology - 68%)",
+    "address": "Chapra, Bihar",
+    "message": "Interested in 4-year B.Sc Nursing degree program and clinical internship.",
+    "status": "Completed",
+    "date": "2026-08-31 16:10:00"
+  }
+]
