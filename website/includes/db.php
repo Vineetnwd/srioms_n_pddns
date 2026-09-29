@@ -10,8 +10,32 @@ if (!defined('SRIOMS_SITE')) {
 
 define('SRIOMS_DATA_DIR', __DIR__ . '/../data');
 
+// ==========================================
+// MySQL Database Configuration
+// ==========================================
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'u305984835_srioms');
+define('DB_USER', 'u305984835_srioms');
+define('DB_PASS', '@User_2001');
+
+function srioms_db_connect()
+{
+    static $pdo = null;
+    if ($pdo !== null)
+        return $pdo;
+
+    try {
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
+    } catch (PDOException $e) {
+        return null;
+    }
+}
+
 // Data loader helper
-function srioms_load_json($filename, $default = []) {
+function srioms_load_json($filename, $default = [])
+{
     $path = SRIOMS_DATA_DIR . '/' . $filename;
     if (!file_exists($path)) {
         return $default;
@@ -22,7 +46,8 @@ function srioms_load_json($filename, $default = []) {
 }
 
 // Data saver helper
-function srioms_save_json($filename, $data) {
+function srioms_save_json($filename, $data)
+{
     if (!is_dir(SRIOMS_DATA_DIR)) {
         mkdir(SRIOMS_DATA_DIR, 0755, true);
     }
@@ -31,8 +56,9 @@ function srioms_save_json($filename, $data) {
 }
 
 // Helper to resolve images from both assets/images/gallery and uploads folders
-function resolve_gallery_image_src($img_url, $is_admin = false) {
-    $clean = ltrim((string)$img_url, '/');
+function resolve_gallery_image_src($img_url, $is_admin = false)
+{
+    $clean = ltrim((string) $img_url, '/');
     $prefix = $is_admin ? '../' : '';
     $root_dir = $is_admin ? (__DIR__ . '/../../') : (__DIR__ . '/../');
     $filename = basename($clean);
@@ -69,19 +95,21 @@ function resolve_gallery_image_src($img_url, $is_admin = false) {
 }
 
 // Gallery Functions
-function get_gallery_items($category = 'all') {
+function get_gallery_items($category = 'all')
+{
     $items = srioms_load_json('gallery.json', []);
     if ($category === 'all') {
         return $items;
     }
-    return array_values(array_filter($items, function($item) use ($category) {
+    return array_values(array_filter($items, function ($item) use ($category) {
         return isset($item['category']) && $item['category'] === $category;
     }));
 }
 
-function save_gallery_item($item) {
+function save_gallery_item($item)
+{
     $items = srioms_load_json('gallery.json', []);
-    $id = !empty($item['id']) ? (int)$item['id'] : time();
+    $id = !empty($item['id']) ? (int) $item['id'] : time();
     $item['id'] = $id;
     if (empty($item['created_at'])) {
         $item['created_at'] = date('Y-m-d H:i:s');
@@ -89,7 +117,7 @@ function save_gallery_item($item) {
 
     $found = false;
     foreach ($items as &$existing) {
-        if ((int)($existing['id'] ?? 0) === $id) {
+        if ((int) ($existing['id'] ?? 0) === $id) {
             $existing = array_merge($existing, $item);
             $found = true;
             break;
@@ -105,42 +133,46 @@ function save_gallery_item($item) {
     return $id;
 }
 
-function delete_gallery_item($id) {
-    $id_int = (int)$id;
+function delete_gallery_item($id)
+{
+    $id_int = (int) $id;
     $items = srioms_load_json('gallery.json', []);
-    $filtered = array_values(array_filter($items, function($item) use ($id_int) {
-        return (int)($item['id'] ?? 0) !== $id_int;
+    $filtered = array_values(array_filter($items, function ($item) use ($id_int) {
+        return (int) ($item['id'] ?? 0) !== $id_int;
     }));
     return srioms_save_json('gallery.json', $filtered);
 }
 
 // Inquiries & Admissions Functions
-function get_inquiries_list() {
+function get_inquiries_list()
+{
     return srioms_load_json('inquiries.json', []);
 }
 
-function save_inquiry($data) {
+function save_inquiry($data)
+{
     $inquiries = srioms_load_json('inquiries.json', []);
     $new_inquiry = [
-        'id'            => time(),
-        'name'          => htmlspecialchars($data['name'] ?? ''),
-        'phone'         => htmlspecialchars($data['phone'] ?? ''),
-        'email'         => htmlspecialchars($data['email'] ?? ''),
-        'type'          => htmlspecialchars($data['type'] ?? $data['subject'] ?? 'General Inquiry'),
-        'course'        => htmlspecialchars($data['course'] ?? ''),
+        'id' => time(),
+        'name' => htmlspecialchars($data['name'] ?? ''),
+        'phone' => htmlspecialchars($data['phone'] ?? ''),
+        'email' => htmlspecialchars($data['email'] ?? ''),
+        'type' => htmlspecialchars($data['type'] ?? $data['subject'] ?? 'General Inquiry'),
+        'course' => htmlspecialchars($data['course'] ?? ''),
         'guardian_name' => htmlspecialchars($data['guardian_name'] ?? ''),
         'qualification' => htmlspecialchars($data['qualification'] ?? ''),
-        'address'       => htmlspecialchars($data['address'] ?? ''),
-        'message'       => htmlspecialchars($data['message'] ?? $data['notes'] ?? ''),
-        'status'        => 'New',
-        'date'          => date('Y-m-d H:i:s')
+        'address' => htmlspecialchars($data['address'] ?? ''),
+        'message' => htmlspecialchars($data['message'] ?? $data['notes'] ?? ''),
+        'status' => 'New',
+        'date' => date('Y-m-d H:i:s')
     ];
     array_unshift($inquiries, $new_inquiry);
     srioms_save_json('inquiries.json', $inquiries);
     return $new_inquiry;
 }
 
-function update_inquiry_status($id, $status) {
+function update_inquiry_status($id, $status)
+{
     $inquiries = srioms_load_json('inquiries.json', []);
     foreach ($inquiries as &$inquiry) {
         if ($inquiry['id'] == $id) {
@@ -151,49 +183,90 @@ function update_inquiry_status($id, $status) {
     return srioms_save_json('inquiries.json', $inquiries);
 }
 
-function delete_inquiry($id) {
+function delete_inquiry($id)
+{
     $inquiries = srioms_load_json('inquiries.json', []);
-    $filtered = array_values(array_filter($inquiries, function($inquiry) use ($id) {
+    $filtered = array_values(array_filter($inquiries, function ($inquiry) use ($id) {
         return $inquiry['id'] != $id;
     }));
     return srioms_save_json('inquiries.json', $filtered);
 }
 
 // Courses Functions
-function get_courses_list() {
-    return srioms_load_json('courses.json', []);
-}
-
-function save_course_item($course) {
-    $courses = srioms_load_json('courses.json', []);
-    if (empty($course['id'])) {
-        $course['id'] = time();
-        $courses[] = $course;
-    } else {
-        foreach ($courses as &$c) {
-            if ($c['id'] == $course['id']) {
-                $c = array_merge($c, $course);
-                break;
-            }
+function get_courses_list()
+{
+    $pdo = srioms_db_connect();
+    if ($pdo) {
+        try {
+            $stmt = $pdo->query("SELECT * FROM srioms_courses ORDER BY id ASC");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return [];
         }
     }
-    return srioms_save_json('courses.json', $courses);
+    return [];
 }
 
-function delete_course_item($id) {
-    $courses = srioms_load_json('courses.json', []);
-    $filtered = array_values(array_filter($courses, function($c) use ($id) {
-        return $c['id'] != $id;
-    }));
-    return srioms_save_json('courses.json', $filtered);
+function save_course_item($course)
+{
+    $pdo = srioms_db_connect();
+    if (!$pdo) return false;
+    
+    try {
+        if (empty($course['id'])) {
+            $stmt = $pdo->prepare("INSERT INTO srioms_courses (code, name, level, duration, eligibility, seats, fees, description, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            return $stmt->execute([
+                $course['code'] ?? '',
+                $course['name'] ?? '',
+                $course['level'] ?? '',
+                $course['duration'] ?? '',
+                $course['eligibility'] ?? '',
+                $course['seats'] ?? '',
+                $course['fees'] ?? '',
+                $course['description'] ?? '',
+                $course['status'] ?? 'Active'
+            ]);
+        } else {
+            $stmt = $pdo->prepare("UPDATE srioms_courses SET code=?, name=?, level=?, duration=?, eligibility=?, seats=?, fees=?, description=?, status=? WHERE id=?");
+            return $stmt->execute([
+                $course['code'] ?? '',
+                $course['name'] ?? '',
+                $course['level'] ?? '',
+                $course['duration'] ?? '',
+                $course['eligibility'] ?? '',
+                $course['seats'] ?? '',
+                $course['fees'] ?? '',
+                $course['description'] ?? '',
+                $course['status'] ?? 'Active',
+                $course['id']
+            ]);
+        }
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+function delete_course_item($id)
+{
+    $pdo = srioms_db_connect();
+    if (!$pdo) return false;
+    
+    try {
+        $stmt = $pdo->prepare("DELETE FROM srioms_courses WHERE id = ?");
+        return $stmt->execute([$id]);
+    } catch (PDOException $e) {
+        return false;
+    }
 }
 
 // Services Functions
-function get_services_list() {
+function get_services_list()
+{
     return srioms_load_json('services.json', []);
 }
 
-function save_service_item($service) {
+function save_service_item($service)
+{
     $services = srioms_load_json('services.json', []);
     if (empty($service['id'])) {
         $service['id'] = time();
@@ -209,34 +282,114 @@ function save_service_item($service) {
     return srioms_save_json('services.json', $services);
 }
 
-function delete_service_item($id) {
+function delete_service_item($id)
+{
     $services = srioms_load_json('services.json', []);
-    $filtered = array_values(array_filter($services, function($s) use ($id) {
+    $filtered = array_values(array_filter($services, function ($s) use ($id) {
         return $s['id'] != $id;
     }));
     return srioms_save_json('services.json', $filtered);
 }
 
 // Settings Functions
-function get_site_settings() {
+function get_site_settings()
+{
     return srioms_load_json('settings.json', [
-        'site_name'       => 'SHRI RAM Institute of Medical Sciences',
+        'site_name' => 'SHRI RAM Institute of Medical Sciences',
         'site_short_name' => 'SRIOMS',
-        'site_tagline'    => 'Centre for Paramedical Education & Advanced Diagnostics',
-        'site_email'      => 'info@srioms.co.in',
-        'site_phone'      => '+91 9934402822',
-        'site_phone_alt'  => '+91 9431426600',
-        'site_emergency'  => '+91 9934402822',
-        'site_address'    => 'Shri Ram MRI Scan Center, Fatehpur Bypass Road, Siwan - 841226 (Bihar)',
-        'app_login_url'   => 'https://apps.srioms.co.in/login.php',
-        'webmail_url'     => 'https://mail.hostinger.com/',
-        'admin_user'      => 'admin',
-        'admin_email'     => 'info@srioms.co.in'
+        'site_tagline' => 'Centre for Paramedical Education & Advanced Diagnostics',
+        'site_email' => 'info@srioms.co.in',
+        'site_phone' => '+91 9934402822',
+        'site_phone_alt' => '+91 9431426600',
+        'site_emergency' => '+91 9934402822',
+        'site_address' => 'Shri Ram MRI Scan Center, Fatehpur Bypass Road, Siwan - 841226 (Bihar)',
+        'app_login_url' => 'https://apps.srioms.co.in/login.php',
+        'webmail_url' => 'https://mail.hostinger.com/',
+        'admin_user' => 'admin',
+        'admin_email' => 'info@srioms.co.in'
     ]);
 }
 
-function save_site_settings($data) {
+function save_site_settings($data)
+{
     $current = get_site_settings();
     $updated = array_merge($current, $data);
     return srioms_save_json('settings.json', $updated);
 }
+
+// Pages Functions
+function get_pages_list()
+{
+    return srioms_load_json('pages.json', []);
+}
+
+function get_page_by_slug($slug)
+{
+    $pages = get_pages_list();
+    foreach ($pages as $p) {
+        if ($p['slug'] === $slug) {
+            return $p;
+        }
+    }
+    return null;
+}
+
+function save_page_item($page)
+{
+    $pages = srioms_load_json('pages.json', []);
+    if (empty($page['id'])) {
+        $page['id'] = time();
+        $pages[] = $page;
+    } else {
+        foreach ($pages as &$p) {
+            if ($p['id'] == $page['id']) {
+                $p = array_merge($p, $page);
+                break;
+            }
+        }
+    }
+    return srioms_save_json('pages.json', $pages);
+}
+
+function delete_page_item($id)
+{
+    $pages = srioms_load_json('pages.json', []);
+    $filtered = array_values(array_filter($pages, function ($p) use ($id) {
+        return $p['id'] != $id;
+    }));
+    return srioms_save_json('pages.json', $filtered);
+}
+
+// Staff Functions
+function get_staff_list()
+{
+    return srioms_load_json('staff.json', []);
+}
+
+function save_staff_item($staff)
+{
+    $staff_list = srioms_load_json('staff.json', []);
+    if (empty($staff['id'])) {
+        $staff['id'] = time();
+        $staff_list[] = $staff;
+    } else {
+        foreach ($staff_list as &$s) {
+            if ($s['id'] == $staff['id']) {
+                $s = array_merge($s, $staff);
+                break;
+            }
+        }
+    }
+    return srioms_save_json('staff.json', $staff_list);
+}
+
+function delete_staff_item($id)
+{
+    $staff_list = srioms_load_json('staff.json', []);
+    $filtered = array_values(array_filter($staff_list, function ($s) use ($id) {
+        return $s['id'] != $id;
+    }));
+    return srioms_save_json('staff.json', $filtered);
+}
+
+

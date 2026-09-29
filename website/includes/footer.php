@@ -57,13 +57,13 @@ if (!defined('SRIOMS_SITE')) {
             <div class="footer-col">
                 <h4 class="footer-heading">Diagnostic Center</h4>
                 <ul class="footer-links">
-                    <li><a href="services.php#mri"><i class="fa-solid fa-angle-right"></i> Shri Ram MRI Scan</a></li>
-                    <li><a href="services.php#ctscan"><i class="fa-solid fa-angle-right"></i> Multi-Slice CT Scan</a></li>
-                    <li><a href="services.php#ultrasound"><i class="fa-solid fa-angle-right"></i> 3D/4D Ultrasound & Doppler</a></li>
-                    <li><a href="services.php#pathology"><i class="fa-solid fa-angle-right"></i> Automated Pathology Lab</a></li>
-                    <li><a href="services.php#xray"><i class="fa-solid fa-angle-right"></i> High-Frequency Digital X-Ray</a></li>
-                    <li><a href="services.php#ecg"><i class="fa-solid fa-angle-right"></i> ECG & Cardiology Tests</a></li>
-                    <li><a href="services.php#physio"><i class="fa-solid fa-angle-right"></i> Physiotherapy & Rehab</a></li>
+                    <li><a href="our-services.php#mri"><i class="fa-solid fa-angle-right"></i> Shri Ram MRI Scan</a></li>
+                    <li><a href="our-services.php#ctscan"><i class="fa-solid fa-angle-right"></i> Multi-Slice CT Scan</a></li>
+                    <li><a href="our-services.php#ultrasound"><i class="fa-solid fa-angle-right"></i> 3D/4D Ultrasound & Doppler</a></li>
+                    <li><a href="our-services.php#pathology"><i class="fa-solid fa-angle-right"></i> Automated Pathology Lab</a></li>
+                    <li><a href="our-services.php#xray"><i class="fa-solid fa-angle-right"></i> High-Frequency Digital X-Ray</a></li>
+                    <li><a href="our-services.php#ecg"><i class="fa-solid fa-angle-right"></i> ECG & Cardiology Tests</a></li>
+                    <li><a href="our-services.php#physio"><i class="fa-solid fa-angle-right"></i> Physiotherapy & Rehab</a></li>
                 </ul>
             </div>
 

@@ -39,8 +39,23 @@ $current_admin_page = isset($current_admin_page) ? $current_admin_page : 'dashbo
                 </a>
             </li>
             <li>
-                <a href="services.php" class="<?php echo ($current_admin_page === 'services') ? 'active' : ''; ?>">
+                <a href="staff.php" class="<?php echo ($current_admin_page === 'staff') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-users"></i> Staff Directory
+                </a>
+            </li>
+            <li>
+                <a href="pages.php" class="<?php echo ($current_admin_page === 'pages') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-file-alt"></i> Website Pages
+                </a>
+            </li>
+            <li>
+                <a href="our-services.php" class="<?php echo ($current_admin_page === 'services') ? 'active' : ''; ?>">
                     <i class="fa-solid fa-x-ray"></i> Diagnostic Services
+                </a>
+            </li>
+            <li>
+                <a href="users.php" class="<?php echo ($current_admin_page === 'users') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-users-cog"></i> Admin Users
                 </a>
             </li>
             <li>

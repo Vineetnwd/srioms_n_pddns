@@ -235,7 +235,7 @@ $gallery_items = get_gallery_items('all');
                         style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 0.8rem; font-weight: 700; color: var(--emerald-600);"><i
                                 class="fa-solid fa-clock"></i> 24x7 Open</span>
-                        <a href="services.php" class="btn btn-primary btn-compact">Details</a>
+                        <a href="our-services.php" class="btn btn-primary btn-compact">Details</a>
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@ $gallery_items = get_gallery_items('all');
                         style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 0.8rem; font-weight: 700; color: var(--emerald-600);"><i
                                 class="fa-solid fa-clock"></i> 24x7 Open</span>
-                        <a href="services.php" class="btn btn-primary btn-compact">Details</a>
+                        <a href="our-services.php" class="btn btn-primary btn-compact">Details</a>
                     </div>
                 </div>
             </div>
@@ -273,7 +273,7 @@ $gallery_items = get_gallery_items('all');
                         style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 0.8rem; font-weight: 700; color: var(--emerald-600);"><i
                                 class="fa-solid fa-clock"></i> 24x7 Open</span>
-                        <a href="services.php" class="btn btn-primary btn-compact">Details</a>
+                        <a href="our-services.php" class="btn btn-primary btn-compact">Details</a>
                     </div>
                 </div>
             </div>

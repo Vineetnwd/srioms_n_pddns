@@ -1,0 +1,274 @@
+[
+    {
+        "name": "Dr. Vikram Singh Chouhan",
+        "designation": "HOD (D.P.T/B.P.T)",
+        "details": "MBBS, M.S",
+        "experience": "9 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. J N Prasad",
+        "designation": "LECTURER (D.P.T/B.P.T)",
+        "details": "MBBS, M.D",
+        "experience": "9 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Anil Kumar",
+        "designation": "LECTURER (D.P.T/B.P.T)",
+        "details": "MBBS",
+        "experience": "6 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Jai Prakash Narayan",
+        "designation": "DEMONSTRATOR (D.P.T/B.P.T)",
+        "details": "MBBS",
+        "experience": "5 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Bipul Kumar Chauhan",
+        "designation": "DEMONSTRATOR (D.P.T/B.P.T)",
+        "details": "BPT",
+        "experience": "4 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Ahutosh Kr. Sinha",
+        "designation": "HOD (D.M.L.T/B.M.L.T.)",
+        "details": "MBBS, M.D",
+        "experience": "12 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Sangeeta Gupta",
+        "designation": "LECTURER (D.M.L.T/B.M.L.T.)",
+        "details": "MBBS, MD",
+        "experience": "10 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Umashankar Pandey",
+        "designation": "LECTURER (D.M.L.T/B.M.L.T.)",
+        "details": "MBBS, M.D",
+        "experience": "08 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Aakansha Kumari",
+        "designation": "DEMONSTRATOR (D.M.L.T/B.M.L.T.)",
+        "details": "BSc MLT",
+        "experience": "04 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. SSP Gupta",
+        "designation": "DEMONSTRATOR (D.M.L.T/B.M.L.T.)",
+        "details": "BAMS",
+        "experience": "04 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. S. B. Sinha",
+        "designation": "HOD (D.O.T.A/B.O.T.T.A)",
+        "details": "MBBS M.S",
+        "experience": "7 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Vinay Kumar Singh",
+        "designation": "LECTURER (D.O.T.A/B.O.T.T.A)",
+        "details": "MBBS, M.S",
+        "experience": "6 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Sunil Kumar",
+        "designation": "LECTURER (D.O.T.A/B.O.T.T.A)",
+        "details": "MBBS, M.D",
+        "experience": "5 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. SSP Gupta",
+        "designation": "DEMONSTRATOR (D.O.T.A/B.O.T.T.A)",
+        "details": "BOTT/BAMS",
+        "experience": "4 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. S. M. Hasan",
+        "designation": "DEMONSTRATOR (D.O.T.A/B.O.T.T.A)",
+        "details": "DOTT",
+        "experience": "4 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Rita Sinha",
+        "designation": "HOD (C.M.D)",
+        "details": "MBBS, MD",
+        "experience": "6 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. S. B Sinha",
+        "designation": "LECTURER (C.M.D)",
+        "details": "MBBS, MS",
+        "experience": "7 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Mamta Singh",
+        "designation": "LECTURER (C.M.D)",
+        "details": "MBBS",
+        "experience": "5 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. SSP Gupta",
+        "designation": "DEMONSTRATOR (C.M.D)",
+        "details": "BOTT/BAMS",
+        "experience": "4 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. S. M. Hasan",
+        "designation": "DEMONSTRATOR (C.M.D)",
+        "details": "DOTT",
+        "experience": "4 Years",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. J.N. Prasad",
+        "designation": "HOD (D.M.R/B.M.R.I.T)",
+        "details": "MBBS, M.D",
+        "experience": "10 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Astha",
+        "designation": "LECTURER (D.M.R/B.M.R.I.T)",
+        "details": "MBBS",
+        "experience": "1 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Umesh Chandra Gupta",
+        "designation": "LECTURER (D.M.R/B.M.R.I.T)",
+        "details": "DMRD, MD",
+        "experience": "8 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Pramod Dixit",
+        "designation": "LECTURER (D.M.R/B.M.R.I.T)",
+        "details": "MBBS, MD",
+        "experience": "6 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Mr. Sandeep Kumar Tiwari",
+        "designation": "DEMONSTRATOR (D.M.R/B.M.R.I.T)",
+        "details": "BMRIT",
+        "experience": "10 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr N. K Pandey",
+        "designation": "DEMONSTRATOR (D.M.R/B.M.R.I.T)",
+        "details": "DMR/ BMRIT",
+        "experience": "10 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. J.N. Prasad",
+        "designation": "HOD (ECG TECHNICIAN)",
+        "details": "MBBS, M.D",
+        "experience": "10 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Shankar Singh",
+        "designation": "LECTURER (ECG TECHNICIAN)",
+        "details": "MBBS, M.D",
+        "experience": "6 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Taufique Ahmad",
+        "designation": "LECTURER (ECG TECHNICIAN)",
+        "details": "MBBS, M.D",
+        "experience": "6 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr Sunil Kumar",
+        "designation": "DEMONSTRATOR (ECG TECHNICIAN)",
+        "details": "MD",
+        "experience": "6 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Arti Rani Pandey",
+        "designation": "HOD (D SANITARY INSPECTOR)",
+        "details": "MBBS",
+        "experience": "8 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Naval Kishore",
+        "designation": "LECTURER (D SANITARY INSPECTOR)",
+        "details": "MBBS M.D",
+        "experience": "8 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr. Sikha Sinha",
+        "designation": "LECTURER (D SANITARY INSPECTOR)",
+        "details": "MBBS",
+        "experience": "3 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    },
+    {
+        "name": "Dr Vinay Kumar Pandey",
+        "designation": "LECTURER (D SANITARY INSPECTOR)",
+        "details": "MBBS",
+        "experience": "8 YEARS",
+        "category": "Teaching",
+        "id": 1790671689
+    }
+]

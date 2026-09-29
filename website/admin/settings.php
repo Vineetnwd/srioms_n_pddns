@@ -24,16 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         'site_timings'    => trim($_POST['site_timings'] ?? $settings['site_timings']),
         'app_login_url'   => trim($_POST['app_login_url'] ?? $settings['app_login_url']),
         'webmail_url'     => trim($_POST['webmail_url'] ?? $settings['webmail_url']),
-        'notice_ticker'   => trim($_POST['notice_ticker'] ?? $settings['notice_ticker']),
-        'admin_user'      => trim($_POST['admin_user'] ?? $settings['admin_user'])
+        'notice_ticker'   => trim($_POST['notice_ticker'] ?? $settings['notice_ticker'])
     ];
-
-    // Optional password change
-    if (!empty($_POST['new_password'])) {
-        $p = trim($_POST['new_password']);
-        $updated_settings['admin_password'] = $p;
-        $updated_settings['admin_pass_hash'] = password_hash($p, PASSWORD_DEFAULT);
-    }
 
     save_site_settings($updated_settings);
     $settings = get_site_settings();
@@ -50,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         <h2 class="admin-card-title"><i class="fa-solid fa-sliders text-primary"></i> General Settings & Contact Information</h2>
     </div>
     <div class="admin-card-body">
-        <form method="POST" action="settings.php">
+        <form method="POST" action="">
             <input type="hidden" name="action" value="save_settings">
 
             <!-- Notice Ticker -->
@@ -111,20 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 </div>
             </div>
 
-            <div class="form-heading mt-3 mb-2" style="font-weight: 700; color: var(--admin-primary); border-top: 1px solid var(--admin-border); padding-top: 16px;">
-                <i class="fa-solid fa-user-lock"></i> Admin Account Credentials
-            </div>
-
-            <div class="form-grid-2">
-                <div class="form-group">
-                    <label class="form-label">Admin Username</label>
-                    <input type="text" name="admin_user" class="form-input" value="<?php echo htmlspecialchars($settings['admin_user'] ?? 'admin'); ?>">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Change Password (leave blank to keep current)</label>
-                    <input type="password" name="new_password" class="form-input" placeholder="Enter new password">
-                </div>
-            </div>
+            <!-- Admin Account Credentials moved to users.php -->
 
             <button type="submit" class="admin-btn admin-btn-accent mt-3"><i class="fa-solid fa-floppy-disk"></i> Save Settings & Notice</button>
         </form>

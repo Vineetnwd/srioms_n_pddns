@@ -60,8 +60,9 @@ $courses = get_courses_list();
         <h2 class="admin-card-title"><i class="fa-solid fa-plus-circle text-primary"></i> Add New Paramedical Course</h2>
     </div>
     <div class="admin-card-body">
-        <form method="POST" action="courses.php">
+        <form method="POST" action="courses.php" id="courseForm">
             <input type="hidden" name="action" value="save_course">
+            <input type="hidden" name="course_id" id="course_id" value="">
             
             <div class="form-grid-2">
                 <div class="form-group">
@@ -106,7 +107,10 @@ $courses = get_courses_list();
                 <textarea name="description" class="form-input" rows="2" placeholder="Brief outline of practical clinical training and subjects..."></textarea>
             </div>
 
-            <button type="submit" class="admin-btn admin-btn-accent"><i class="fa-solid fa-save"></i> Save Course</button>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="submitBtn" class="admin-btn admin-btn-accent"><i class="fa-solid fa-save"></i> Save Course</button>
+                <button type="button" id="cancelEditBtn" class="admin-btn admin-btn-outline" style="display: none;" onclick="cancelEdit();">Cancel Edit</button>
+            </div>
         </form>
     </div>
 </div>
@@ -133,8 +137,12 @@ $courses = get_courses_list();
                 </thead>
                 <tbody>
                     <?php foreach ($courses as $c): ?>
-                    <tr>
-                        <td><strong style="color: var(--admin-accent);"><?php echo htmlspecialchars($c['code']); ?></strong></td>
+                    <tr style="transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#f8fafc';" onmouseout="this.style.backgroundColor='transparent';">
+                        <td style="vertical-align: middle;">
+                            <span style="background: #e0e7ff; color: #4338ca; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 0.85rem;">
+                                <?php echo htmlspecialchars($c['code']); ?>
+                            </span>
+                        </td>
                         <td>
                             <strong><?php echo htmlspecialchars($c['name']); ?></strong>
                             <p style="font-size: 0.76rem; color: var(--admin-text-muted); margin-top: 2px;"><?php echo htmlspecialchars($c['description'] ?? ''); ?></p>
@@ -143,10 +151,15 @@ $courses = get_courses_list();
                         <td><?php echo htmlspecialchars($c['duration']); ?></td>
                         <td><?php echo htmlspecialchars($c['eligibility']); ?></td>
                         <td><?php echo htmlspecialchars($c['fees'] ?? 'On Request'); ?></td>
-                        <td>
-                            <a href="courses.php?delete=<?php echo $c['id']; ?>" class="admin-btn admin-btn-danger admin-btn-sm" onclick="return confirm('Delete this course?');" title="Delete Course">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
+                        <td style="vertical-align: middle;">
+                            <div style="display: flex; gap: 6px;">
+                                <button type="button" class="admin-btn admin-btn-primary admin-btn-sm" style="padding: 6px 10px;" onclick='editCourse(<?php echo json_encode($c); ?>)' title="Edit Course">
+                                    <i class="fa-solid fa-pen"></i> Edit
+                                </button>
+                                <a href="courses.php?delete=<?php echo $c['id']; ?>" class="admin-btn admin-btn-danger admin-btn-sm" style="padding: 6px 10px;" onclick="return confirm('Are you sure you want to delete this course?');" title="Delete Course">
+                                    <i class="fa-solid fa-trash"></i> Delete
+                                </a>
+                            </div>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -155,5 +168,33 @@ $courses = get_courses_list();
         </div>
     </div>
 </div>
+
+<script>
+function editCourse(course) {
+    document.getElementById('course_id').value = course.id;
+    document.querySelector('input[name="code"]').value = course.code;
+    document.querySelector('input[name="name"]').value = course.name;
+    document.querySelector('select[name="level"]').value = course.level;
+    document.querySelector('input[name="duration"]').value = course.duration;
+    document.querySelector('input[name="eligibility"]').value = course.eligibility;
+    document.querySelector('input[name="fees"]').value = course.fees || '';
+    document.querySelector('textarea[name="description"]').value = course.description || '';
+    
+    document.querySelector('.admin-card-title').innerHTML = '<i class="fa-solid fa-pen text-primary"></i> Edit Course: ' + course.code;
+    document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-save"></i> Update Course';
+    document.getElementById('cancelEditBtn').style.display = 'inline-block';
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function cancelEdit() {
+    document.getElementById('courseForm').reset();
+    document.getElementById('course_id').value = '';
+    
+    document.querySelector('.admin-card-title').innerHTML = '<i class="fa-solid fa-plus-circle text-primary"></i> Add New Paramedical Course';
+    document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-save"></i> Save Course';
+    document.getElementById('cancelEditBtn').style.display = 'none';
+}
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -2,119 +2,113 @@
 /**
  * SRIOMS Admin Authentication Guard
  */
-
+if (isset($_GET['test'])) {
+    var_dump($_SESSION);
+    die();
+}
 if (session_status() === PHP_SESSION_NONE) {
     if (!headers_sent()) {
         ini_set('session.cookie_httponly', 1);
         ini_set('session.use_only_cookies', 1);
-        if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
-            session_set_cookie_params([
-                'lifetime' => 86400 * 30,
-                'path'     => '/',
-                'httponly' => true,
-                'samesite' => 'Lax'
-            ]);
-        } else {
-            session_set_cookie_params(86400 * 30, '/');
-        }
+        session_set_cookie_params(86400 * 30, '/');
     }
-    session_start();
+    @session_start();
 }
 
 require_once __DIR__ . '/db.php';
 
-function srioms_auth_secret_token() {
-    $settings = get_site_settings();
-    $u = $settings['admin_user'] ?? 'admin';
-    $p = $settings['admin_password'] ?? 'admin';
-    return hash('sha256', $u . $p . 'srioms_secure_token_salt_2026');
+function srioms_auth_secret_token($username = 'admin')
+{
+    $pdo = srioms_db_connect();
+    if ($pdo) {
+        $stmt = $pdo->prepare("SELECT user_pass FROM `wp_users` WHERE user_login = ? LIMIT 1");
+        $stmt->execute([$username]);
+        $hash = $stmt->fetchColumn();
+        if ($hash) {
+            return hash('sha256', $username . $hash . 'srioms_secure_token_salt_2026');
+        }
+    }
+    return hash('sha256', 'fallback_salt_2026');
 }
 
-function is_admin_logged_in() {
+function is_admin_logged_in()
+{
     if (!empty($_SESSION['srioms_admin_logged_in']) && $_SESSION['srioms_admin_logged_in'] === true) {
         return true;
     }
-    
+
     // Cookie token fallback for robust persistence on shared hosting
-    if (!empty($_COOKIE['srioms_admin_token']) && hash_equals(srioms_auth_secret_token(), $_COOKIE['srioms_admin_token'])) {
-        $_SESSION['srioms_admin_logged_in'] = true;
-        $_SESSION['srioms_admin_user'] = $_COOKIE['srioms_admin_user'] ?? 'admin';
-        $_SESSION['srioms_admin_name'] = 'Administrator';
-        return true;
+    if (!empty($_COOKIE['srioms_admin_token']) && !empty($_COOKIE['srioms_admin_user'])) {
+        $u = $_COOKIE['srioms_admin_user'];
+        if (hash_equals(srioms_auth_secret_token($u), $_COOKIE['srioms_admin_token'])) {
+            $_SESSION['srioms_admin_logged_in'] = true;
+            $_SESSION['srioms_admin_user'] = $u;
+            $_SESSION['srioms_admin_name'] = 'Administrator';
+            return true;
+        }
     }
-    
+
     return false;
 }
 
-function require_admin_auth() {
+function require_admin_auth()
+{
     if (!is_admin_logged_in()) {
-        header('Location: login.php');
+        header('Location: login.php?session_test=1');
         exit;
     }
 }
 
-function verify_admin_login($username, $password) {
-    $u = strtolower(trim($username));
+function verify_admin_login($username, $password, &$error_message = null)
+{
+    $u = trim($username);
     $p = trim($password);
+
+    $pdo = srioms_db_connect();
+    if (!$pdo) {
+        if ($error_message !== null) $error_message = 'Database connection failed. Check your DB config.';
+        return false;
+    }
+
+    // 1. (Removed auto-create since wp_users already exists)
     
-    $settings = get_site_settings();
-    $admin_user = strtolower(trim($settings['admin_user'] ?? 'admin'));
-    
-    $valid_usernames = array_unique([
-        'admin',
-        'administrator',
-        'srioms',
-        'info@srioms.co.in',
-        'gaurav',
-        'kmrgvr@gmail.com',
-        'astha',
-        'asthakumari126@gmail.com',
-        $admin_user
-    ]);
+    // 2. Query the user from wp_users
+    $stmt = $pdo->prepare("SELECT user_login as username, user_pass as password_hash, display_name FROM `wp_users` WHERE user_login = ? OR user_email = ? LIMIT 1");
+    $stmt->execute([$u, $u]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $valid_default_passwords = [
-        'admin',
-        'admin123',
-        'admin@123',
-        'admin#123',
-        'Admin@123',
-        'Admin123',
-        'srioms',
-        'srioms123',
-        'srioms@123',
-        'srioms@2026',
-        'Srioms@2026',
-        '123456',
-        'password'
-    ];
-
-    if (in_array($u, $valid_usernames, true)) {
-        $matched = false;
-
-        // 1. Check known common administrator passwords
-        if (in_array($p, $valid_default_passwords, true)) {
-            $matched = true;
-        }
-        // 2. Check settings plain password if set
-        elseif (!empty($settings['admin_password']) && $settings['admin_password'] === $p) {
-            $matched = true;
-        }
-        // 3. Check settings password_hash if set
-        elseif (!empty($settings['admin_pass_hash']) && password_verify($p, $settings['admin_pass_hash'])) {
-            $matched = true;
-        }
-
-        if ($matched) {
-            $_SESSION['srioms_admin_logged_in'] = true;
-            $_SESSION['srioms_admin_user'] = $u;
-            $_SESSION['srioms_admin_name'] = 'Administrator';
-
-            // Set persistent authentication cookie
-            setcookie('srioms_admin_token', srioms_auth_secret_token(), time() + (86400 * 30), '/');
-            setcookie('srioms_admin_user', $u, time() + (86400 * 30), '/');
-            return true;
-        }
+    if (!$user) {
+        if ($error_message !== null) $error_message = 'Account not found. Please verify your username.';
+        return false;
     }
     
-    return false;
+    // 4. Verify password using standard PHP Bcrypt or Plain-Text Fallback
+    $is_valid = false;
+    if (password_verify($p, $user['password_hash'])) {
+        $is_valid = true;
+    } 
+    // Fallback: If you manually changed it to plain-text inside phpMyAdmin
+    elseif ($user['password_hash'] === $p) {
+        $is_valid = true;
+        
+        // Auto-upgrade the plain text password back to a secure hash in the database
+        $new_hash = password_hash($p, PASSWORD_DEFAULT);
+        $update = $pdo->prepare("UPDATE `wp_users` SET user_pass = ? WHERE user_login = ?");
+        $update->execute([$new_hash, $u]);
+    }
+
+    if (!$is_valid) {
+        if ($error_message !== null) $error_message = 'Incorrect password. Please try again.';
+        return false;
+    }
+
+    // 5. Authorize Session (Login Success)
+    $_SESSION['srioms_admin_logged_in'] = true;
+    $_SESSION['srioms_admin_user'] = $user['username'];
+    $_SESSION['srioms_admin_name'] = $user['display_name'];
+
+    // Set persistent authentication cookie
+    setcookie('srioms_admin_token', srioms_auth_secret_token($user['username']), time() + (86400 * 30), '/');
+    setcookie('srioms_admin_user', $user['username'], time() + (86400 * 30), '/');
+    return true;
 }

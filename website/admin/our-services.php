@@ -55,8 +55,9 @@ $services = get_services_list();
         <h2 class="admin-card-title"><i class="fa-solid fa-plus-circle text-primary"></i> Add Diagnostic Facility / Service</h2>
     </div>
     <div class="admin-card-body">
-        <form method="POST" action="services.php">
+        <form method="POST" action="our-services.php" id="serviceForm">
             <input type="hidden" name="action" value="save_service">
+            <input type="hidden" name="service_id" id="service_id" value="">
             
             <div class="form-grid-2">
                 <div class="form-group">
@@ -85,7 +86,10 @@ $services = get_services_list();
                 <textarea name="description" class="form-input" rows="2" placeholder="Describe scan capabilities, equipment model, and test scope..."></textarea>
             </div>
 
-            <button type="submit" class="admin-btn admin-btn-accent"><i class="fa-solid fa-save"></i> Save Diagnostic Service</button>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="submitBtn" class="admin-btn admin-btn-accent"><i class="fa-solid fa-save"></i> Save Diagnostic Service</button>
+                <button type="button" id="cancelEditBtn" class="admin-btn admin-btn-outline" style="display: none;" onclick="cancelEdit();">Cancel Edit</button>
+            </div>
         </form>
     </div>
 </div>
@@ -94,7 +98,7 @@ $services = get_services_list();
 <div class="admin-card">
     <div class="admin-card-header">
         <h2 class="admin-card-title">Diagnostic Services Catalog (<?php echo count($services); ?> Total)</h2>
-        <a href="../services.php" target="_blank" class="admin-btn admin-btn-outline admin-btn-sm"><i class="fa-solid fa-eye"></i> View Public Services</a>
+        <a href="../our-services.php" target="_blank" class="admin-btn admin-btn-outline admin-btn-sm"><i class="fa-solid fa-eye"></i> View Public Services</a>
     </div>
     <div class="admin-card-body" style="padding: 0;">
         <div class="table-responsive">
@@ -110,15 +114,22 @@ $services = get_services_list();
                 </thead>
                 <tbody>
                     <?php foreach ($services as $s): ?>
-                    <tr>
-                        <td><strong style="color: var(--admin-primary);"><?php echo htmlspecialchars($s['name']); ?></strong></td>
+                    <tr style="transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#f8fafc';" onmouseout="this.style.backgroundColor='transparent';">
+                        <td style="vertical-align: middle;">
+                            <strong style="color: var(--admin-primary); font-size: 1.05rem;"><?php echo htmlspecialchars($s['name']); ?></strong>
+                        </td>
                         <td><span class="badge badge-active"><?php echo htmlspecialchars($s['category']); ?></span></td>
                         <td><i class="fa-regular fa-clock" style="color: var(--admin-text-muted);"></i> <?php echo htmlspecialchars($s['timing']); ?></td>
                         <td><p style="font-size: 0.8rem; color: var(--admin-text-muted);"><?php echo htmlspecialchars($s['description']); ?></p></td>
-                        <td>
-                            <a href="services.php?delete=<?php echo $s['id']; ?>" class="admin-btn admin-btn-danger admin-btn-sm" onclick="return confirm('Delete this diagnostic service?');" title="Delete">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
+                        <td style="vertical-align: middle;">
+                            <div style="display: flex; gap: 6px;">
+                                <button type="button" class="admin-btn admin-btn-primary admin-btn-sm" style="padding: 6px 10px;" onclick='editService(<?php echo json_encode($s); ?>)' title="Edit">
+                                    <i class="fa-solid fa-pen"></i> Edit
+                                </button>
+                                <a href="our-services.php?delete=<?php echo $s['id']; ?>" class="admin-btn admin-btn-danger admin-btn-sm" style="padding: 6px 10px;" onclick="return confirm('Are you sure you want to delete this diagnostic service?');" title="Delete">
+                                    <i class="fa-solid fa-trash"></i> Delete
+                                </a>
+                            </div>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -127,5 +138,30 @@ $services = get_services_list();
         </div>
     </div>
 </div>
+
+<script>
+function editService(service) {
+    document.getElementById('service_id').value = service.id;
+    document.querySelector('input[name="name"]').value = service.name;
+    document.querySelector('select[name="category"]').value = service.category;
+    document.querySelector('input[name="timing"]').value = service.timing || '';
+    document.querySelector('textarea[name="description"]').value = service.description || '';
+    
+    document.querySelector('.admin-card-title').innerHTML = '<i class="fa-solid fa-pen text-primary"></i> Edit Diagnostic Service: ' + service.name;
+    document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-save"></i> Update Service';
+    document.getElementById('cancelEditBtn').style.display = 'inline-block';
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function cancelEdit() {
+    document.getElementById('serviceForm').reset();
+    document.getElementById('service_id').value = '';
+    
+    document.querySelector('.admin-card-title').innerHTML = '<i class="fa-solid fa-plus-circle text-primary"></i> Add Diagnostic Facility / Service';
+    document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-save"></i> Save Diagnostic Service';
+    document.getElementById('cancelEditBtn').style.display = 'none';
+}
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
